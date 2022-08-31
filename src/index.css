@@ -1,0 +1,27 @@
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.field-width {
+    width: 250px;
+}
+
+.m20 {
+    margin: 20px;
+}
+
+.gap5 {
+    gap: 5px;
+}
+
+.title-label {
+    font-weight: 700;
+}
