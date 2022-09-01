@@ -12,23 +12,21 @@ const CommonField = ({
     options = []
   } = data;
   const handleChangeText = (e) => {
-    value = e.target.value;
-    changeHandler({ ...data, value })
+    const newValue = e.target.value;
+    changeHandler({ ...data, value: newValue })
   }
 
   const handleChangeCheckbox = (index) => () => {
-    value[index].isChecked = !value[index]?.isChecked;
-    changeHandler({ ...data, value });
+    const newValue = JSON.parse(JSON.stringify(value));
+    newValue[index].isChecked = !newValue[index]?.isChecked;
+    changeHandler({ ...data, value: newValue });
   }
 
   const handleChangeDropdown = (e) => {
-    console.log('e.target >>', e.target)
-    console.log('e.target.value >>', e.target.value)
-    console.log('e.target.name >>', e.target.name)
-    value.id = e.target.value;
-    value.name = e.target.name;
-    console.log('value >> ', value)
-    changeHandler({ ...data, value });
+    const newValue = JSON.parse(JSON.stringify(value));
+    newValue.id = e.target.value;
+    newValue.name = e.target.name;
+    changeHandler({ ...data, value: newValue });
   }
 
   switch (fieldType) {
@@ -60,7 +58,7 @@ const CommonField = ({
         <Wrapper>
           <label className='title-label' htmlFor={label}>{label}</label>
           <select onChange={handleChangeDropdown}>
-            <option disabled>---Select---</option>
+            <option selected disabled>---Select---</option>
             {
               options.map(anOption => {
                 return (
